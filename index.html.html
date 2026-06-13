@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فن السباكة — أفضل المنتجات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --steel: #1B2A3B;
+    --copper: #C8722A;
+    --copper-light: #E8943F;
+    --pipe: #2E4057;
+    --light: #F5F7FA;
+    --white: #FFFFFF;
+    --text: #1B2A3B;
+    --muted: #6B7A8D;
+    --card-bg: #FFFFFF;
+    --border: #E2E8F0;
+  }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--steel);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--copper);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .logo-text {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .logo-text span {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+  }
+
+  .header-badge {
+    background: var(--copper);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--steel) 0%, var(--pipe) 100%);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 200px; height: 200px;
+    background: var(--copper);
+    opacity: 0.07;
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -40px;
+    width: 260px; height: 260px;
+    background: var(--copper);
+    opacity: 0.05;
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    color: var(--white);
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 900;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .hero h1 em {
+    color: var(--copper-light);
+    font-style: normal;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.72);
+    font-size: 14px;
+    max-width: 380px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    position: relative;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    color: var(--copper-light);
+    font-size: 24px;
+    font-weight: 900;
+    display: block;
+  }
+
+  .stat-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 11px;
+  }
+
+  /* CATEGORIES */
+  .categories {
+    padding: 20px 16px 8px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .categories::-webkit-scrollbar { display: none; }
+
+  .cat-btn {
+    white-space: nowrap;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    background: white;
+    color: var(--muted);
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .cat-btn.active,
+  .cat-btn:hover {
+    background: var(--copper);
+    border-color: var(--copper);
+    color: white;
+  }
+
+  /* SECTION TITLE */
+  .section-header {
+    padding: 24px 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--steel);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to left, transparent, var(--border));
+  }
+
+  /* PRODUCTS GRID */
+  .products {
+    padding: 0 16px 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .product-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .product-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--steel);
+    margin-bottom: 6px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .stars {
+    color: #F59E0B;
+    font-size: 11px;
+  }
+
+  .rating-count {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .product-price {
+    color: var(--copper);
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .product-price .currency {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .buy-btn {
+    display: block;
+    width: 100%;
+    background: var(--steel);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .buy-btn:hover {
+    background: var(--copper);
+  }
+
+  .badge-new {
+    display: inline-block;
+    background: #10B981;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .badge-hot {
+    display: inline-block;
+    background: var(--copper);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  /* YOUTUBE SECTION */
+  .yt-section {
+    background: var(--steel);
+    margin: 0 16px 32px;
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .yt-section::before {
+    content: '▶';
+    position: absolute;
+    font-size: 140px;
+    color: rgba(255,255,255,0.03);
+    top: -20px;
+    left: -10px;
+  }
+
+  .yt-section h2 {
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .yt-section p {
+    color: rgba(255,255,255,0.65);
+    font-size: 13px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .yt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--copper);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .yt-btn:hover { background: var(--copper-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--steel);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  footer a {
+    color: var(--copper-light);
+    text-decoration: none;
+  }
+
+  footer strong {
+    color: white;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #FEF3C7;
+    border-right: 4px solid #F59E0B;
+    margin: 0 16px 20px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #78350F;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 400px) {
+    .products { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .hero { padding: 36px 16px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🔧</div>
+    <div class="logo-text">
+      فن السباكة
+      <span>أدوات ومعدات موثوقة</span>
+    </div>
+  </div>
+  <div class="header-badge">295K+ متابع</div>
+</header>
+
+<section class="hero">
+  <h1>أفضل أدوات السباكة<br><em>باختيار المحترفين</em></h1>
+  <p>كل منتج جربناه وأوصينا به في فيديوهاتنا — روابط مباشرة من أمازون السعودية</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-number">+50</span>
+      <span class="stat-label">منتج مختار</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">295K</span>
+      <span class="stat-label">متابع يثق بنا</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">موثوق</span>
+    </div>
+  </div>
+</section>
+
+<div class="categories">
+  <button class="cat-btn active">الكل</button>
+  <button class="cat-btn">أدوات يدوية</button>
+  <button class="cat-btn">صنابير ومحابس</button>
+  <button class="cat-btn">خراطيم وأنابيب</button>
+  <button class="cat-btn">مواد عزل</button>
+  <button class="cat-btn">مضخات</button>
+  <button class="cat-btn">قياس وكشف</button>
+</div>
+
+<div class="section-header">
+  <span class="section-title">🔥 الأكثر مبيعاً</span>
+  <div class="section-line"></div>
+</div>
+
+<div class="products">
+
+  <a href="YOUR_AMAZON_LINK_1" class="product-card" target="_blank">
+    <div class="product-img">🔧</div>
+    <div class="product-info">
+      <span class="badge-hot">الأكثر طلباً</span>
+      <div class="product-name">طقم مفاتيح سباكة احترافي 12 قطعة</div>
+      <div class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-count">(٢٤٨)</span>
+      </div>
+      <div class="product-price"><span class="currency">ر.س </span>189</div>
+      <button class="buy-btn">اشتري من أمازون</button>
+    </div>
+  </a>
+
+  <a href="YOUR_AMAZON_LINK_2" class="product-card" target="_blank">
+    <div class="product-img">🚰</div>
+    <div class="product-info">
+      <span class="badge-new">جديد</span>
+      <div class="product-name">صنبور خلاط حمام بضغط عالٍ</div>
+      <div class="product-rating">
+        <span class="stars">★★★★☆</span>
+        <span class="rating-count">(١٣٦)</span>
+      </div>
+      <div class="product-price"><span class="currency">ر.س </span>245</div>
+      <button class="buy-btn">اشتري من أمازون</button>
+    </div>
+  </a>
+
+  <a href="YOUR_AMAZON_LINK_3" class="product-card" target="_blank">
+    <div class="product-img">💧</div>
+    <div class="product-info">
+      <div class="product-name">شريط تيفلون احترافي — عبوة 10 لفات</div>
+      <div class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-count">(٥٨٢)</span>
+      </div>
+      <div class="product-price"><span class="currency">ر.س </span>35</div>
+      <button class="buy-btn">اشتري من أمازون</button>
+    </div>
+  </a>
+
+  <a href="YOUR_AMAZON_LINK_4" class="product-card" target="_blank">
+    <div class="product-img">🪛</div>
+    <div class="product-info">
+      <span class="badge-hot">موصى به</span>
+      <div class="product-name">كاشف تسرب ماء بالموجات الصوتية</div>
+      <div class="product-rating">
+        <span class="stars">★★★★☆</span>
+        <span class="rating-count">(٩٧)</span>
+      </div>
+      <div class="product-price"><span class="currency">ر.س </span>420</div>
+      <button class="buy-btn">اشتري من أمازون</button>
+    </div>
+  </a>
+
+  <a href="YOUR_AMAZON_LINK_5" class="product-card" target="_blank">
+    <div class="product-img">🔩</div>
+    <div class="product-info">
+      <div class="product-name">خرطوم مياء مرن مضفر 2 متر</div>
+      <div class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-count">(٣١٤)</span>
+      </div>
+      <div class="product-price"><span class="currency">ر.س </span>75</div>
+      <button class="buy-btn">اشتري من أمازون</button>
+    </div>
+  </a>
+
+  <a href="YOUR_AMAZON_LINK_6" class="product-card" target="_blank">
+    <div class="product-img">⚙️</div>
+    <div class="product-info">
+      <span class="badge-new">عرض</span>
+      <div class="product-name">مضخة تصريف غاطسة 750 وات</div>
+      <div class="product-rating">
+        <span class="stars">★★★★☆</span>
+        <span class="rating-count">(١٨٩)</span>
+      </div>
+      <div class="product-price"><span class="currency">ر.س </span>680</div>
+      <button class="buy-btn">اشتري من أمازون</button>
+    </div>
+  </a>
+
+</div>
+
+<div class="disclaimer">
+  ⚠️ هذه الصفحة تحتوي على روابط أفلييت — عند شرائك عبر هذه الروابط نحصل على عمولة بسيطة من أمازون دون أي تكلفة إضافية عليك. نوصي فقط بمنتجات جربناها أو وثقنا بجودتها.
+</div>
+
+<div class="yt-section">
+  <h2>شاهد المنتجات في العمل</h2>
+  <p>كل أداة لها فيديو تطبيقي على قناتنا — تعلّم قبل أن تشتري</p>
+  <a href="YOUR_FACEBOOK_PAGE_LINK" class="yt-btn" target="_blank">
+    📺 فيديوهات السباكة
+  </a>
+</div>
+
+<footer>
+  <strong>فن السباكة</strong>
+  محتوى سباكة احترافي منذ سنوات<br>
+  <a href="YOUR_FACEBOOK_PAGE_LINK">صفحة فيسبوك</a> · 
+  <a href="mailto:your@email.com">تواصل معنا</a>
+  <br><br>
+  © 2025 فن السباكة — جميع الحقوق محفوظة
+</footer>
+
+<script>
+  // Category filter buttons
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
