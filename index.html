@@ -19,6 +19,8 @@
     --muted: #6B7A8D;
     --card-bg: #FFFFFF;
     --border: #E2E8F0;
+    --ad-bg: #F0F7FF;
+    --ad-border: #BFDBFE;
   }
 
   body {
@@ -28,7 +30,7 @@
     min-height: 100vh;
   }
 
-  /* HEADER */
+  /* ===== HEADER ===== */
   header {
     background: var(--steel);
     padding: 18px 24px;
@@ -56,6 +58,7 @@
     align-items: center;
     justify-content: center;
     font-size: 22px;
+    flex-shrink: 0;
   }
 
   .logo-text {
@@ -80,9 +83,10 @@
     font-weight: 700;
     padding: 6px 14px;
     border-radius: 20px;
+    white-space: nowrap;
   }
 
-  /* HERO */
+  /* ===== HERO ===== */
   .hero {
     background: linear-gradient(135deg, var(--steel) 0%, var(--pipe) 100%);
     padding: 48px 24px 40px;
@@ -140,9 +144,7 @@
     position: relative;
   }
 
-  .stat {
-    text-align: center;
-  }
+  .stat { text-align: center; }
 
   .stat-number {
     color: var(--copper-light);
@@ -156,7 +158,104 @@
     font-size: 11px;
   }
 
-  /* CATEGORIES */
+  /* ===== AD BANNER (أعلى الصفحة) ===== */
+  .ad-banner-top {
+    background: var(--ad-bg);
+    border-bottom: 2px solid var(--ad-border);
+    padding: 12px 16px;
+    text-align: center;
+  }
+
+  /* ===== AD STRIP (مساحة إعلانية أفقية) ===== */
+  .ad-strip {
+    margin: 8px 16px 4px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px dashed var(--ad-border);
+    background: var(--ad-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+    position: relative;
+  }
+
+  .ad-strip-label {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.8);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .ad-strip-placeholder {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ad-strip-placeholder span {
+    font-size: 28px;
+  }
+
+  /* ===== AD BOX (مساحة إعلانية مربعة في الشبكة) ===== */
+  .ad-card {
+    background: linear-gradient(135deg, var(--ad-bg), #EFF6FF);
+    border-radius: 16px;
+    border: 2px dashed var(--ad-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    gap: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .ad-card:hover { border-color: #93C5FD; }
+
+  .ad-card-label {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 9px;
+    color: #60A5FA;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .ad-card-icon { font-size: 32px; }
+
+  .ad-card-text {
+    font-size: 12px;
+    color: #60A5FA;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .ad-card-sub {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* ===== CATEGORIES ===== */
   .categories {
     padding: 20px 16px 8px;
     display: flex;
@@ -189,7 +288,7 @@
     color: white;
   }
 
-  /* SECTION TITLE */
+  /* ===== SECTION HEADER ===== */
   .section-header {
     padding: 24px 20px 16px;
     display: flex;
@@ -201,6 +300,7 @@
     font-size: 18px;
     font-weight: 900;
     color: var(--steel);
+    white-space: nowrap;
   }
 
   .section-line {
@@ -209,7 +309,7 @@
     background: linear-gradient(to left, transparent, var(--border));
   }
 
-  /* PRODUCTS GRID */
+  /* ===== PRODUCTS GRID ===== */
   .products {
     padding: 0 16px 32px;
     display: grid;
@@ -244,17 +344,17 @@
     align-items: center;
     justify-content: center;
     font-size: 48px;
+    overflow: hidden;
   }
 
   .product-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
-  .product-info {
-    padding: 12px;
-  }
+  .product-info { padding: 12px; }
 
   .product-name {
     font-size: 13px;
@@ -275,15 +375,9 @@
     margin-bottom: 8px;
   }
 
-  .stars {
-    color: #F59E0B;
-    font-size: 11px;
-  }
+  .stars { color: #F59E0B; font-size: 11px; }
 
-  .rating-count {
-    font-size: 11px;
-    color: var(--muted);
-  }
+  .rating-count { font-size: 11px; color: var(--muted); }
 
   .product-price {
     color: var(--copper);
@@ -292,10 +386,7 @@
     margin-bottom: 10px;
   }
 
-  .product-price .currency {
-    font-size: 11px;
-    font-weight: 600;
-  }
+  .product-price .currency { font-size: 11px; font-weight: 600; }
 
   .buy-btn {
     display: block;
@@ -314,9 +405,7 @@
     cursor: pointer;
   }
 
-  .buy-btn:hover {
-    background: var(--copper);
-  }
+  .buy-btn:hover { background: var(--copper); }
 
   .badge-new {
     display: inline-block;
@@ -340,7 +429,43 @@
     margin-bottom: 6px;
   }
 
-  /* YOUTUBE SECTION */
+  /* ===== AD SIDEBAR SECTION (بعد المنتجات) ===== */
+  .ad-full-width {
+    margin: 0 16px 32px;
+    border-radius: 16px;
+    border: 2px dashed var(--ad-border);
+    background: linear-gradient(135deg, var(--ad-bg), #F0FDF4);
+    padding: 24px;
+    text-align: center;
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .ad-full-width .ad-strip-label {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+  }
+
+  .ad-full-width-icon { font-size: 36px; }
+
+  .ad-full-width-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: #60A5FA;
+  }
+
+  .ad-full-width-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ===== YOUTUBE SECTION ===== */
   .yt-section {
     background: var(--steel);
     margin: 0 16px 32px;
@@ -358,6 +483,7 @@
     color: rgba(255,255,255,0.03);
     top: -20px;
     left: -10px;
+    pointer-events: none;
   }
 
   .yt-section h2 {
@@ -391,7 +517,19 @@
 
   .yt-btn:hover { background: var(--copper-light); }
 
-  /* FOOTER */
+  /* ===== DISCLAIMER ===== */
+  .disclaimer {
+    background: #FEF3C7;
+    border-right: 4px solid #F59E0B;
+    margin: 0 16px 24px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #78350F;
+    line-height: 1.6;
+  }
+
+  /* ===== FOOTER ===== */
   footer {
     background: var(--steel);
     color: rgba(255,255,255,0.6);
@@ -413,26 +551,17 @@
     margin-bottom: 4px;
   }
 
-  /* DISCLAIMER */
-  .disclaimer {
-    background: #FEF3C7;
-    border-right: 4px solid #F59E0B;
-    margin: 0 16px 20px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 12px;
-    color: #78350F;
-    line-height: 1.6;
-  }
-
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 400px) {
     .products { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .hero { padding: 36px 16px 32px; }
+    .hero-stats { gap: 20px; }
   }
 </style>
 </head>
 <body>
 
+<!-- ========== HEADER ========== -->
 <header>
   <div class="logo">
     <div class="logo-icon">🔧</div>
@@ -444,6 +573,7 @@
   <div class="header-badge">295K+ متابع</div>
 </header>
 
+<!-- ========== HERO ========== -->
 <section class="hero">
   <h1>أفضل أدوات السباكة<br><em>باختيار المحترفين</em></h1>
   <p>كل منتج جربناه وأوصينا به في فيديوهاتنا — روابط مباشرة من أمازون السعودية</p>
@@ -463,6 +593,16 @@
   </div>
 </section>
 
+<!-- ========== إعلان أفقي (بانر علوي) ========== -->
+<div class="ad-strip">
+  <span class="ad-strip-label">إعلان</span>
+  <div class="ad-strip-placeholder">
+    <span>📢</span>
+    مساحة إعلانية — 728×90
+  </div>
+</div>
+
+<!-- ========== CATEGORIES ========== -->
 <div class="categories">
   <button class="cat-btn active">الكل</button>
   <button class="cat-btn">أدوات يدوية</button>
@@ -473,20 +613,23 @@
   <button class="cat-btn">قياس وكشف</button>
 </div>
 
+<!-- ========== SECTION HEADER ========== -->
 <div class="section-header">
   <span class="section-title">🔥 الأكثر مبيعاً</span>
   <div class="section-line"></div>
 </div>
 
+<!-- ========== PRODUCTS GRID ========== -->
 <div class="products">
 
-  <a href="https://amzn.to/3QB6JUt" class="product-card" target="_blank">
-   <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/51vQb9Kfe5L._AC_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+  <!-- منتج 1 -->
+  <a href="https://amzn.to/3QB6JUt" class="product-card" target="_blank" rel="nofollow">
+    <div class="product-img">
+      <img src="https://m.media-amazon.com/images/I/51vQb9Kfe5L._AC_.jpg" alt="غطاء تصريف سقف دائري">
+    </div>
     <div class="product-info">
       <span class="badge-hot">الأكثر طلباً</span>
-      <div class="product-name">غطاء تصريف سقف دائري من فولاذ مقاوم للصدأ لتركيبات سباكة أنابيب المطر عالية التدفق (أنبوب 75)</div>
+      <div class="product-name">غطاء تصريف سقف دائري من فولاذ مقاوم للصدأ لتركيبات سباكة أنابيب المطر (أنبوب 75)</div>
       <div class="product-rating">
         <span class="stars">★★★★★</span>
         <span class="rating-count">(4.7)</span>
@@ -496,142 +639,175 @@
     </div>
   </a>
 
-  <a href="https://amzn.to/4oKOV69" class="product-card" target="_blank">
+  <!-- منتج 2 -->
+  <a href="https://amzn.to/4oKOV69" class="product-card" target="_blank" rel="nofollow">
     <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/61LvYlFNt7L._AC_SX569_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+      <img src="https://m.media-amazon.com/images/I/61LvYlFNt7L._AC_SX569_.jpg" alt="أداة استخراج البراغي">
+    </div>
     <div class="product-info">
       <span class="badge-new">جديد</span>
-      <div class="product-name">أداة استخراج البراغي - أداة إزالة براغي أنابيب المياه مزدوجة الاستخدام لإزالة البراغي المكسورة لأنابيب 1.27 سم، 1.9 سم، أداة سهلة لاستخراج البراغي التالفة أو المكسورة، من سزلياندز</div>
+      <div class="product-name">أداة استخراج البراغي مزدوجة الاستخدام لإزالة البراغي المكسورة لأنابيب 1.27 سم، 1.9 سم</div>
       <div class="product-rating">
         <span class="stars">★★★★☆</span>
-        <span class="rating-count">(١٣٦)</span>
+        <span class="rating-count">(136)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>12.77</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
 
-  <a href="https://amzn.to/4uvwwev" class="product-card" target="_blank">
+  <!-- منتج 3 -->
+  <a href="https://amzn.to/4uvwwev" class="product-card" target="_blank" rel="nofollow">
     <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/61DMSBJkkML._SX522_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+      <img src="https://m.media-amazon.com/images/I/61DMSBJkkML._SX522_.jpg" alt="موسّع حواف الأنابيب">
+    </div>
     <div class="product-info">
-      <div class="product-name">موسّع حواف الأنابيب الدائرية المشطوفة، مكشطة PE PVC PP مطورة لإزالة النتوءات من الأنابيب</div>
+      <div class="product-name">موسّع حواف الأنابيب الدائرية المشطوفة، مكشطة PE PVC PP لإزالة النتوءات</div>
       <div class="product-rating">
         <span class="stars">★★★★★</span>
-        <span class="rating-count">(٥٨٢)</span>
+        <span class="rating-count">(582)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>19.29</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
 
-  <a href="https://amzn.to/3QFqhab" class="product-card" target="_blank">
-     <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/71lzrtibGGL._AC_SX569_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+  <!-- منتج 4 -->
+  <a href="https://amzn.to/3QFqhab" class="product-card" target="_blank" rel="nofollow">
+    <div class="product-img">
+      <img src="https://m.media-amazon.com/images/I/71lzrtibGGL._AC_SX569_.jpg" alt="أداة ربط أنابيب PVC">
+    </div>
     <div class="product-info">
       <span class="badge-hot">موصى به</span>
-      <div class="product-name">اداة ربط انابيب مزدوجة الوظائف لانابيب بلاستيك PVC، مجموعة قوالب 1/2 انش 3/4 انش 1 انش، مثقاب كهربائي متوافق مع اصلاحات السباكة المنزلية، فضي</div>
+      <div class="product-name">أداة ربط أنابيب مزدوجة الوظائف لأنابيب PVC، قوالب 1/2 - 3/4 - 1 انش</div>
       <div class="product-rating">
         <span class="stars">★★★★☆</span>
-        <span class="rating-count">(٩٧)</span>
+        <span class="rating-count">(97)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>12.33</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
 
-  <a href="https://amzn.to/3S1ZHbP" class="product-card" target="_blank">
-   <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/51SSOH+ZHpL._AC_SX569_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+  <!-- ========== مساحة إعلانية داخل الشبكة ========== -->
+  <div class="ad-card">
+    <span class="ad-card-label">إعلان</span>
+    <span class="ad-card-icon">📦</span>
+    <div class="ad-card-text">مساحة إعلانية<br>300×250</div>
+    <div class="ad-card-sub">ضع إعلانك هنا</div>
+  </div>
+
+  <!-- منتج 5 -->
+  <a href="https://amzn.to/3S1ZHbP" class="product-card" target="_blank" rel="nofollow">
+    <div class="product-img">
+      <img src="https://m.media-amazon.com/images/I/51SSOH+ZHpL._AC_SX569_.jpg" alt="مجموعة استخراج براغي">
+    </div>
     <div class="product-info">
-      <div class="product-name">مجموعة استخراج وإزالة براغي مجردة تالفة، سهلة الاستخدام، أداة إزالة براغي ألن سداسية مكسورة، أداة استخراج أنابيب المياه المكسورة، أفضل هدايا للرجال للاستخدام بأنفسهمر</div>
+      <div class="product-name">مجموعة استخراج وإزالة براغي مجردة تالفة، أداة إزالة براغي ألن سداسية مكسورة</div>
       <div class="product-rating">
         <span class="stars">★★★★★</span>
-        <span class="rating-count">(٣١٤)</span>
+        <span class="rating-count">(314)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>13.96</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
- 
- <a href="https://amzn.to/4ekPWgb">
-   <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/71uoVwHQLsL._AC_SX569_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+
+  <!-- منتج 6 -->
+  <a href="https://amzn.to/4ekPWgb" class="product-card" target="_blank" rel="nofollow">
+    <div class="product-img">
+      <img src="https://m.media-amazon.com/images/I/71uoVwHQLsL._AC_SX569_.jpg" alt="صمام نحاسي ثنائي الاتجاه">
+    </div>
     <div class="product-info">
-      <div class="product-name">صمام نحاسي ثنائي الاتجاه، 1 مدخل 2 صمام مخرج، زاوية تبديل للمرحاض</div>
+      <div class="product-name">صمام نحاسي ثنائي الاتجاه، 1 مدخل 2 مخرج، زاوية تبديل للمرحاض</div>
       <div class="product-rating">
         <span class="stars">★★★★★</span>
-        <span class="rating-count">(٣١٤)</span>
+        <span class="rating-count">(314)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>44.77</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
 
-  <a href="https://amzn.to/49XUsjq" class="product-card" target="_blank">
+  <!-- منتج 7 -->
+  <a href="https://amzn.to/49XUsjq" class="product-card" target="_blank" rel="nofollow">
     <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/71N94QG5ZpL._SX522_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+      <img src="https://m.media-amazon.com/images/I/71N94QG5ZpL._SX522_.jpg" alt="مجموعة حلقات مطاطية O">
+    </div>
     <div class="product-info">
       <span class="badge-new">عرض</span>
-      <div class="product-name">مجموعة حلقات مطاطية على شكل حرف O من بوليفيا، 270 قطعة من حلقات ختم مطاط النتريل، مجموعة متنوعة من الحلقات الدائرية لمكيف الهواء، مجموعة متنوعة من الحلقات المطاطية لاصلاح السيارات والسباكة (18 مقاسًا)</div>
+      <div class="product-name">مجموعة حلقات مطاطية O من النتريل، 270 قطعة 18 مقاساً لإصلاح السباكة والسيارات</div>
       <div class="product-rating">
         <span class="stars">★★★★☆</span>
-        <span class="rating-count">(١٨٩)</span>
+        <span class="rating-count">(189)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>30.99</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
 
-</div>
-
-  <a href="https://amzn.to/3Q4xeBA">
+  <!-- منتج 8 -->
+  <a href="https://amzn.to/3Q4xeBA" class="product-card" target="_blank" rel="nofollow">
     <div class="product-img">
-<img src="https://m.media-amazon.com/images/I/713oeHVjElL._AC_SX569_.jpg" style="width:100%;height:100%;object-fit:cover;">
-</div>
+      <img src="https://m.media-amazon.com/images/I/713oeHVjElL._AC_SX569_.jpg" alt="أداة إزالة منظم تدفق المياه">
+    </div>
     <div class="product-info">
       <span class="badge-new">عرض</span>
       <div class="product-name">أداة إزالة منظم تدفق المياه من الصنبور</div>
       <div class="product-rating">
         <span class="stars">★★★★☆</span>
-        <span class="rating-count">(١٨٩)</span>
+        <span class="rating-count">(189)</span>
       </div>
       <div class="product-price"><span class="currency">ر.س </span>11.61</div>
       <button class="buy-btn">اشتري من أمازون</button>
     </div>
   </a>
 
- </div>
- 
+</div>
+
+<!-- ========== إعلان أفقي (وسط الصفحة) ========== -->
+<div class="ad-full-width">
+  <span class="ad-strip-label">إعلان</span>
+  <span class="ad-full-width-icon">📢</span>
+  <div class="ad-full-width-text">مساحة إعلانية — 728×90</div>
+  <div class="ad-full-width-sub">ضع إعلانك هنا للوصول إلى جمهور السباكة</div>
+</div>
+
+<!-- ========== DISCLAIMER ========== -->
 <div class="disclaimer">
   ⚠️ هذه الصفحة تحتوي على روابط أفلييت — عند شرائك عبر هذه الروابط من أمازون لا توجد أي تكلفة إضافية عليك. نوصي فقط بمنتجات جربناها أو وثقنا بجودتها.
 </div>
 
+<!-- ========== FACEBOOK / VIDEO SECTION ========== -->
 <div class="yt-section">
   <h2>شاهد المنتجات في العمل</h2>
-  <p>كل أداة لها فيديو تطبيقي على قناتنا — تعلّم قبل أن تشتري</p>
-  <a href="https://www.facebook.com/share/1D2taW8r1g/?mibextid=wwXIfr" class="yt-btn" target="_blank">
+  <p>كل أداة لها فيديو تطبيقي على صفحتنا — تعلّم قبل أن تشتري</p>
+  <a href="https://www.facebook.com/share/1D2taW8r1g/?mibextid=wwXIfr" class="yt-btn" target="_blank" rel="noopener">
     📺 فيديوهات السباكة
   </a>
 </div>
 
+<!-- ========== إعلان أفقي (قبل الفوتر) ========== -->
+<div class="ad-strip" style="margin-bottom: 24px;">
+  <span class="ad-strip-label">إعلان</span>
+  <div class="ad-strip-placeholder">
+    <span>📢</span>
+    مساحة إعلانية — 728×90
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
 <footer>
   <strong>فن السباكة</strong>
   محتوى سباكة احترافي منذ سنوات<br>
-  <a href="https://www.facebook.com/share/1D2taW8r1g/?mibextid=wwXIfr">صفحة فيسبوك</a> · 
+  <a href="https://www.facebook.com/share/1D2taW8r1g/?mibextid=wwXIfr" target="_blank" rel="noopener">صفحة فيسبوك</a> · 
   <a href="mailto:your@email.com">تواصل معنا</a>
   <br><br>
   © 2025 فن السباكة — جميع الحقوق محفوظة
 </footer>
 
 <script>
-  // Category filter buttons
+  // تفعيل أزرار التصنيف
   document.querySelectorAll('.cat-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
